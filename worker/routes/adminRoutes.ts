@@ -6,9 +6,9 @@ import { Env } from '../types';
 
 export async function handleAdminMetrics(request: Request, env: Env): Promise<Response> {
   const authHeader = request.headers.get('Authorization');
-  const adminSecret = env.ADMIN_SECRET || 'admin123';
+  const adminSecret = env.ADMIN_SECRET;
 
-  if (!authHeader || !authHeader.includes(adminSecret)) {
+  if (!adminSecret || !authHeader || !authHeader.includes(adminSecret)) {
     return new Response(JSON.stringify({ error: 'Unauthorized admin access' }), {
       status: 401,
       headers: { 'Content-Type': 'application/json' },
