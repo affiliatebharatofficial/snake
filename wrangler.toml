@@ -1,0 +1,30 @@
+name = "snake-and-ladder-online"
+main = "worker/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+
+# Cloudflare D1 Relational Database Binding
+[[d1_databases]]
+binding = "DB"
+database_name = "snake_ladder_db"
+database_id = "local-d1-snake-ladder-id"
+migrations_dir = "db/migrations"
+
+# Cloudflare Durable Objects for Authoritative Real-Time Rooms
+[durable_objects]
+bindings = [
+  { name = "SNAKE_LADDER_ROOM", class_name = "SnakeLadderRoom" }
+]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["SnakeLadderRoom"]
+
+# Environment Variables
+[vars]
+ENVIRONMENT = "production"
+ADMIN_SECRET = "admin123"
