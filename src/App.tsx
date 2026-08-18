@@ -8,6 +8,7 @@ import { HowToPlayPage } from './pages/HowToPlayPage';
 import { RulesPage } from './pages/RulesPage';
 import { PlayWithFriendsPage } from './pages/PlayWithFriendsPage';
 import { AboutPage } from './pages/AboutPage';
+import { ContactPage } from './pages/ContactPage';
 import { AdminPage } from './pages/AdminPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
@@ -32,6 +33,7 @@ export function App() {
             <Route path="/play-with-friends" element={<PlayWithFriendsPage />} />
             <Route path="/multiplayer-snake-and-ladder" element={<PlayWithFriendsPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
 
             {/* Dynamic Game Screen (noindex) */}
             <Route path="/game/:roomCode" element={<GamePage />} />

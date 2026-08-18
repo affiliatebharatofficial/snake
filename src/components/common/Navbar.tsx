@@ -50,19 +50,25 @@ export const Navbar: React.FC = () => {
             <span>How to Play</span>
           </Link>
           <Link
-            to="/snake-and-ladder-online"
+            to="/snake-and-ladder-rules"
             onClick={() => sound.playClick()}
             className="hover:text-[#fffdfa] transition-colors"
           >
-            Rules & Board
+            Rules &amp; Board
           </Link>
           <Link
-            to="/admin"
+            to="/about"
             onClick={() => sound.playClick()}
-            className="hover:text-[#fffdfa] transition-colors flex items-center space-x-1 text-[#8c7e72]"
+            className="hover:text-[#fffdfa] transition-colors"
           >
-            <Shield className="w-3.5 h-3.5" />
-            <span>Admin</span>
+            About Us
+          </Link>
+          <Link
+            to="/contact"
+            onClick={() => sound.playClick()}
+            className="hover:text-[#fffdfa] transition-colors"
+          >
+            Contact
           </Link>
         </nav>
 
@@ -90,6 +96,7 @@ export const Navbar: React.FC = () => {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 rounded-xl bg-[#29221b] border border-[#523d2b] text-[#d6c9ba]"
+            aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -105,29 +112,39 @@ export const Navbar: React.FC = () => {
               sound.playClick();
               setMobileMenuOpen(false);
             }}
-            className="block text-sm font-semibold text-[#d6c9ba] py-1.5"
+            className="block text-sm font-semibold text-[#d6c9ba] py-1.5 hover:text-[#fffdfa]"
           >
             How to Play
           </Link>
           <Link
-            to="/snake-and-ladder-online"
+            to="/snake-and-ladder-rules"
             onClick={() => {
               sound.playClick();
               setMobileMenuOpen(false);
             }}
-            className="block text-sm font-semibold text-[#d6c9ba] py-1.5"
+            className="block text-sm font-semibold text-[#d6c9ba] py-1.5 hover:text-[#fffdfa]"
           >
-            Rules & Board
+            Rules &amp; Board
           </Link>
           <Link
-            to="/admin"
+            to="/about"
             onClick={() => {
               sound.playClick();
               setMobileMenuOpen(false);
             }}
-            className="block text-sm font-semibold text-[#8c7e72] py-1.5"
+            className="block text-sm font-semibold text-[#d6c9ba] py-1.5 hover:text-[#fffdfa]"
           >
-            Admin Panel
+            About Us
+          </Link>
+          <Link
+            to="/contact"
+            onClick={() => {
+              sound.playClick();
+              setMobileMenuOpen(false);
+            }}
+            className="block text-sm font-semibold text-[#d6c9ba] py-1.5 hover:text-[#fffdfa]"
+          >
+            Contact
           </Link>
         </div>
       )}
