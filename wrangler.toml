@@ -11,7 +11,7 @@ binding = "ASSETS"
 [[d1_databases]]
 binding = "DB"
 database_name = "snake_ladder_db"
-database_id = "YOUR_CLOUDFLARE_D1_DATABASE_ID"
+database_id = "3e133362-b4c4-4151-b76b-56dc22f322b0"
 migrations_dir = "db/migrations"
 
 # Cloudflare Durable Objects for Authoritative Real-Time Rooms
@@ -22,7 +22,7 @@ bindings = [
 
 [[migrations]]
 tag = "v1"
-new_classes = ["SnakeLadderRoom"]
+new_sqlite_classes = ["SnakeLadderRoom"]
 
 # Public Environment Variables (Do NOT place secrets here)
 [vars]

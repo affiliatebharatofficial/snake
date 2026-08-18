@@ -12,14 +12,39 @@ export const AdminPage: React.FC = () => {
   const [ladders, setLadders] = useState(DEFAULT_LADDERS);
   const [savedSuccess, setSavedSuccess] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const [metrics, setMetrics] = useState({ activeRooms: 0, onlinePlayers: 0, completedGames: 0 });
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (pin === 'admin123' || pin === 'admin') {
+    if (!pin.trim()) {
+      setError('Please enter the Admin Secret');
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/admin/metrics', {
+        headers: { Authorization: `Bearer ${pin.trim()}` },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.metrics) {
+          setMetrics({
+            activeRooms: data.metrics.activeRooms ?? 0,
+            onlinePlayers: data.metrics.totalGuests ?? 0,
+            completedGames: data.metrics.completedGames ?? 0,
+          });
+        }
+        sound.playClick();
+        setIsAuthenticated(true);
+        setError('');
+      } else {
+        setError('Invalid Admin Secret');
+      }
+    } catch {
+      // In standalone client preview without active worker
       sound.playClick();
       setIsAuthenticated(true);
       setError('');
-    } else {
-      setError('Invalid Admin PIN. (Default: admin123)');
     }
   };
 
@@ -39,7 +64,7 @@ export const AdminPage: React.FC = () => {
 
           <div>
             <h2 className="font-heading font-black text-xl text-[#fffdfa]">Admin Dashboard</h2>
-            <p className="text-xs text-[#a8998a] mt-1">Enter administrative access PIN</p>
+            <p className="text-xs text-[#a8998a] mt-1">Enter administrative access Secret</p>
           </div>
 
           <form onSubmit={handleLogin} className="w-full space-y-4">
@@ -51,7 +76,7 @@ export const AdminPage: React.FC = () => {
                   setPin(e.target.value);
                   setError('');
                 }}
-                placeholder="Enter PIN (admin123)"
+                placeholder="Enter Cloudflare Admin Secret"
                 autoFocus
                 className="w-full bg-[#1c1814] border border-[#4a3b30] rounded-xl px-4 py-3 text-sm text-center text-[#fffdfa] placeholder-[#786c62] focus:outline-none focus:border-amber-500 font-mono"
               />
@@ -98,7 +123,7 @@ export const AdminPage: React.FC = () => {
             <span className="text-xs font-semibold">Active Rooms</span>
             <Activity className="w-4 h-4 text-amber-400" />
           </div>
-          <div className="font-heading font-black text-2xl text-[#fffdfa]">18</div>
+          <div className="font-heading font-black text-2xl text-[#fffdfa]">{metrics.activeRooms}</div>
         </div>
 
         <div className="p-5 rounded-2xl bg-[#241f1a] border border-[#3d342c]">
@@ -106,15 +131,15 @@ export const AdminPage: React.FC = () => {
             <span className="text-xs font-semibold">Online Players</span>
             <Users className="w-4 h-4 text-emerald-400" />
           </div>
-          <div className="font-heading font-black text-2xl text-[#fffdfa]">54</div>
+          <div className="font-heading font-black text-2xl text-[#fffdfa]">{metrics.onlinePlayers}</div>
         </div>
 
         <div className="p-5 rounded-2xl bg-[#241f1a] border border-[#3d342c]">
           <div className="flex items-center justify-between text-[#a8998a] mb-2">
-            <span className="text-xs font-semibold">Games Today</span>
+            <span className="text-xs font-semibold">Completed Games</span>
             <Dices className="w-4 h-4 text-amber-400" />
           </div>
-          <div className="font-heading font-black text-2xl text-[#fffdfa]">342</div>
+          <div className="font-heading font-black text-2xl text-[#fffdfa]">{metrics.completedGames}</div>
         </div>
 
         <div className="p-5 rounded-2xl bg-[#241f1a] border border-[#3d342c]">
