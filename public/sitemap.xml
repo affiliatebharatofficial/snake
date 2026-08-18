@@ -18,6 +18,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru" />
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -34,6 +35,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru" />
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -50,6 +52,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru" />
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -66,6 +69,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru" />
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -82,6 +86,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru" />
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -98,6 +103,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru" />
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -114,6 +120,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru" />
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -130,6 +137,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru" />
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -146,6 +154,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru" />
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -162,6 +171,24 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru" />
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://snakeandladder.online/ru</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru" />
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -182,6 +209,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id/how-to-play" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr/how-to-play" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar/how-to-play" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru/how-to-play" />
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -202,6 +230,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id/snake-and-ladder-rules" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr/snake-and-ladder-rules" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar/snake-and-ladder-rules" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru/snake-and-ladder-rules" />
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -222,6 +251,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id/play-with-friends" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr/play-with-friends" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar/play-with-friends" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru/play-with-friends" />
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -242,6 +272,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id/about" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr/about" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru/about" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -262,6 +293,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id/contact" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr/contact" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru/contact" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -282,6 +314,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id/privacy-policy" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr/privacy-policy" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru/privacy-policy" />
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
@@ -302,6 +335,7 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id/terms" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr/terms" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar/terms" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://snakeandladder.online/ru/terms" />
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>

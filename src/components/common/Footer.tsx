@@ -1,12 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Dices, Sparkles, Mail, ShieldCheck, FileText, Info, BookOpen, HelpCircle } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Dices, Sparkles, Mail, ShieldCheck, FileText, Info, BookOpen, HelpCircle, Globe } from 'lucide-react';
 import { sound } from '../../game/soundEngine';
-import { useI18n } from '../../i18n';
+import { useI18n, SUPPORTED_LANGUAGES, stripLanguageFromPath, getLocalizedPath } from '../../i18n';
 
 export const Footer: React.FC = () => {
-  const { t, getLocalizedUrl } = useI18n();
+  const { t, getLocalizedUrl, currentLang } = useI18n();
+  const location = useLocation();
   const currentYear = new Date().getFullYear();
+
+  const cleanPath = stripLanguageFromPath(location.pathname);
 
   return (
     <footer className="w-full border-t border-[#382f27] bg-[#14110e] text-[#a8998a] text-xs py-10 mt-auto">
@@ -151,6 +154,35 @@ export const Footer: React.FC = () => {
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* Global Languages Section (Direct Semantic <a href> Links for Crawlers & Users) */}
+        <div className="py-6 border-b border-[#29221b] space-y-3">
+          <div className="flex items-center space-x-2 text-xs font-bold text-[#d6c9ba] uppercase tracking-wider">
+            <Globe className="w-3.5 h-3.5 text-amber-400" />
+            <span>Languages / Языки / Idiomas / لغات</span>
+          </div>
+          <nav aria-label="Language selection" className="flex flex-wrap gap-2">
+            {SUPPORTED_LANGUAGES.map(lang => {
+              const targetHref = getLocalizedPath(cleanPath, lang.code);
+              const isActive = currentLang === lang.code;
+              return (
+                <Link
+                  key={lang.code}
+                  to={targetHref}
+                  onClick={() => sound.playClick()}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors border ${
+                    isActive
+                      ? 'bg-amber-500/20 border-amber-500/50 text-amber-300 font-bold'
+                      : 'bg-[#1e1915] hover:bg-[#2e2620] border-[#382f27] text-[#a8998a] hover:text-[#fffdfa]'
+                  }`}
+                  hrefLang={lang.code}
+                >
+                  {lang.name}
+                </Link>
+              );
+            })}
+          </nav>
         </div>
 
         {/* Bottom copyright */}

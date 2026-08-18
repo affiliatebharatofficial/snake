@@ -8,7 +8,8 @@ export type SupportedLanguage =
   | 'it'
   | 'id'
   | 'tr'
-  | 'ar';
+  | 'ar'
+  | 'ru';
 
 export interface LanguageInfo {
   code: SupportedLanguage;

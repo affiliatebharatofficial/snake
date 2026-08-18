@@ -11,6 +11,7 @@ import { it } from './locales/it';
 import { id } from './locales/id';
 import { tr } from './locales/tr';
 import { ar } from './locales/ar';
+import { ru } from './locales/ru';
 
 export const SUPPORTED_LANGUAGES: LanguageInfo[] = [
   { code: 'en', name: 'English', englishName: 'English', dir: 'ltr', ogLocale: 'en_US' },
@@ -23,6 +24,7 @@ export const SUPPORTED_LANGUAGES: LanguageInfo[] = [
   { code: 'id', name: 'Bahasa Indonesia', englishName: 'Indonesian', dir: 'ltr', ogLocale: 'id_ID' },
   { code: 'tr', name: 'Türkçe', englishName: 'Turkish', dir: 'ltr', ogLocale: 'tr_TR' },
   { code: 'ar', name: 'العربية', englishName: 'Arabic', dir: 'rtl', ogLocale: 'ar_SA' },
+  { code: 'ru', name: 'Русский', englishName: 'Russian', dir: 'ltr', ogLocale: 'ru_RU' },
 ];
 
 export const DEFAULT_LANGUAGE: SupportedLanguage = 'en';
@@ -38,6 +40,7 @@ export const LOCALES: Record<SupportedLanguage, TranslationSchema> = {
   id,
   tr,
   ar,
+  ru,
 };
 
 const LANG_STORAGE_KEY = 'snake_ladder_lang';
