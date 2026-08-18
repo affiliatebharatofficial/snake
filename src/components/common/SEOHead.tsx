@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useI18n, SUPPORTED_LANGUAGES, stripLanguageFromPath, getLocalizedPath } from '../../i18n';
 
 export interface SEOHeadProps {
   title: string;
@@ -12,11 +13,13 @@ export interface SEOHeadProps {
 export const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
-  canonicalPath = '',
+  canonicalPath,
   ogImage = '/og-image.png',
   noIndex = false,
   jsonLd,
 }) => {
+  const { currentLang, langInfo } = useI18n();
+
   useEffect(() => {
     // 1. Update Title
     document.title = title;
@@ -36,34 +39,61 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     setMetaTag('name', 'description', description);
     setMetaTag('name', 'robots', noIndex ? 'noindex, nofollow' : 'index, follow');
 
-    // 3. Canonical URL
-    const canonicalUrl = `${window.location.origin}${canonicalPath}`;
+    // 3. Base path determination
+    const cleanPath = canonicalPath !== undefined ? stripLanguageFromPath(canonicalPath) : stripLanguageFromPath(window.location.pathname);
+    const origin = window.location.origin;
+
+    // 4. Self-referencing Canonical URL
+    const localizedCanonicalPath = getLocalizedPath(cleanPath, currentLang);
+    const fullCanonicalUrl = `${origin}${localizedCanonicalPath === '/' && currentLang === 'en' ? '' : localizedCanonicalPath}`;
+
     let linkCanonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
     if (!linkCanonical) {
       linkCanonical = document.createElement('link');
       linkCanonical.rel = 'canonical';
       document.head.appendChild(linkCanonical);
     }
-    linkCanonical.href = canonicalUrl;
+    linkCanonical.href = fullCanonicalUrl || `${origin}/`;
 
-    // 4. Open Graph Tags
-    const fullOgImage = ogImage.startsWith('http') ? ogImage : `${window.location.origin}${ogImage}`;
+    // 5. Generate Hreflang Tags for all 10 supported languages + x-default
+    // Remove existing dynamic hreflang tags
+    document.querySelectorAll('link[rel="alternate"][data-i18n-hreflang="true"]').forEach(el => el.remove());
+
+    // x-default -> English default path
+    const xDefaultLink = document.createElement('link');
+    xDefaultLink.rel = 'alternate';
+    xDefaultLink.hreflang = 'x-default';
+    xDefaultLink.href = `${origin}${getLocalizedPath(cleanPath, 'en')}`;
+    xDefaultLink.setAttribute('data-i18n-hreflang', 'true');
+    document.head.appendChild(xDefaultLink);
+
+    // Language alternates
+    SUPPORTED_LANGUAGES.forEach(lang => {
+      const altLink = document.createElement('link');
+      altLink.rel = 'alternate';
+      altLink.hreflang = lang.code;
+      altLink.href = `${origin}${getLocalizedPath(cleanPath, lang.code)}`;
+      altLink.setAttribute('data-i18n-hreflang', 'true');
+      document.head.appendChild(altLink);
+    });
+
+    // 6. Open Graph Tags
+    const fullOgImage = ogImage.startsWith('http') ? ogImage : `${origin}${ogImage}`;
     setMetaTag('property', 'og:title', title);
     setMetaTag('property', 'og:description', description);
-    setMetaTag('property', 'og:url', canonicalUrl);
+    setMetaTag('property', 'og:url', fullCanonicalUrl || `${origin}/`);
     setMetaTag('property', 'og:image', fullOgImage);
     setMetaTag('property', 'og:type', 'website');
     setMetaTag('property', 'og:site_name', 'Snake & Ladder Online');
-    setMetaTag('property', 'og:image:width', '1200');
-    setMetaTag('property', 'og:image:height', '630');
+    setMetaTag('property', 'og:locale', langInfo.ogLocale);
 
-    // 5. Twitter / X Card Tags
+    // 7. Twitter / X Card Tags
     setMetaTag('name', 'twitter:card', 'summary_large_image');
     setMetaTag('name', 'twitter:title', title);
     setMetaTag('name', 'twitter:description', description);
     setMetaTag('name', 'twitter:image', fullOgImage);
 
-    // 6. JSON-LD Structured Data
+    // 8. JSON-LD Structured Data
     const existingScript = document.getElementById('dynamic-json-ld');
     if (existingScript) {
       existingScript.remove();
@@ -81,7 +111,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       const scriptToRemove = document.getElementById('dynamic-json-ld');
       if (scriptToRemove) scriptToRemove.remove();
     };
-  }, [title, description, canonicalPath, ogImage, noIndex, jsonLd]);
+  }, [title, description, canonicalPath, ogImage, noIndex, jsonLd, currentLang, langInfo]);
 
   return null;
 };

@@ -1,6 +1,6 @@
 /**
  * Cloudflare Worker Main Entry Point
- * Handles REST endpoints, CORS, WebSocket upgrade routing to Durable Objects, and Static Assets.
+ * Handles REST endpoints, CORS, WebSocket upgrade routing to Durable Objects, and Static Assets with SPA fallback.
  */
 
 import { Env } from './types';
@@ -80,9 +80,15 @@ export default {
         );
       }
 
-      // 4. Static Asset Serving (Cloudflare Pages / Workers static assets)
+      // 4. Static Asset Serving with SPA Fallback for client routes (/hi/about, /game/ABC123, etc.)
       if (env.ASSETS) {
-        return await env.ASSETS.fetch(request);
+        const assetResponse = await env.ASSETS.fetch(request);
+        if (assetResponse.status === 404 && request.method === 'GET' && !url.pathname.includes('.')) {
+          // Serve index.html for Single-Page Application routing
+          const indexUrl = new URL('/index.html', request.url);
+          return await env.ASSETS.fetch(new Request(indexUrl.toString(), request));
+        }
+        return assetResponse;
       }
 
       return new Response('Not Found', { status: 404 });

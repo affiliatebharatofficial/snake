@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Dices, Sparkles, Mail, ShieldCheck, FileText, Info, BookOpen, HelpCircle } from 'lucide-react';
 import { sound } from '../../game/soundEngine';
+import { useI18n } from '../../i18n';
 
 export const Footer: React.FC = () => {
+  const { t, getLocalizedUrl } = useI18n();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -13,7 +15,7 @@ export const Footer: React.FC = () => {
           {/* Col 1: Brand Info */}
           <div className="space-y-3 md:col-span-1">
             <Link
-              to="/"
+              to={getLocalizedUrl('/')}
               onClick={() => sound.playClick()}
               className="flex items-center space-x-2.5 group"
             >
@@ -25,57 +27,57 @@ export const Footer: React.FC = () => {
               </span>
             </Link>
             <p className="text-[#8c7e72] text-xs leading-relaxed">
-              Free, browser-based online multiplayer Snake and Ladder game. Play instantly with friends, family, or smart AI bots with zero registration required.
+              {t('footer.description')}
             </p>
             <div className="text-[11px] text-[#6b5d50] flex items-center space-x-1.5 pt-1">
               <Sparkles className="w-3 h-3 text-amber-500" />
-              <span>Real-time Multiplayer Experience</span>
+              <span>{t('footer.tag')}</span>
             </div>
           </div>
 
           {/* Col 2: Quick Play & Guides */}
           <div className="space-y-3">
             <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-[#d6c9ba]">
-              Game &amp; Guides
+              {t('footer.gamesAndGuides')}
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link
-                  to="/"
+                  to={getLocalizedUrl('/')}
                   onClick={() => sound.playClick()}
                   className="hover:text-amber-400 transition-colors flex items-center space-x-1.5"
                 >
                   <Dices className="w-3.5 h-3.5 text-amber-500" />
-                  <span>Home</span>
+                  <span>{t('footer.home')}</span>
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/play"
+                  to={getLocalizedUrl('/play')}
                   onClick={() => sound.playClick()}
                   className="hover:text-amber-400 transition-colors"
                 >
-                  Play Snake and Ladder
+                  {t('footer.playSnakeAndLadder')}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/how-to-play"
+                  to={getLocalizedUrl('/how-to-play')}
                   onClick={() => sound.playClick()}
                   className="hover:text-amber-400 transition-colors flex items-center space-x-1.5"
                 >
                   <BookOpen className="w-3.5 h-3.5 text-amber-500" />
-                  <span>How to Play</span>
+                  <span>{t('footer.howToPlay')}</span>
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/snake-and-ladder-rules"
+                  to={getLocalizedUrl('/snake-and-ladder-rules')}
                   onClick={() => sound.playClick()}
                   className="hover:text-amber-400 transition-colors flex items-center space-x-1.5"
                 >
                   <HelpCircle className="w-3.5 h-3.5 text-amber-500" />
-                  <span>Snake and Ladder Rules</span>
+                  <span>{t('footer.rules')}</span>
                 </Link>
               </li>
             </ul>
@@ -84,27 +86,27 @@ export const Footer: React.FC = () => {
           {/* Col 3: About & Contact */}
           <div className="space-y-3">
             <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-[#d6c9ba]">
-              Company &amp; Support
+              {t('footer.companyAndSupport')}
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link
-                  to="/about"
+                  to={getLocalizedUrl('/about')}
                   onClick={() => sound.playClick()}
                   className="hover:text-amber-400 transition-colors flex items-center space-x-1.5"
                 >
                   <Info className="w-3.5 h-3.5 text-amber-500" />
-                  <span>About Us</span>
+                  <span>{t('footer.aboutUs')}</span>
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/contact"
+                  to={getLocalizedUrl('/contact')}
                   onClick={() => sound.playClick()}
                   className="hover:text-amber-400 transition-colors flex items-center space-x-1.5"
                 >
                   <Mail className="w-3.5 h-3.5 text-amber-500" />
-                  <span>Contact Us</span>
+                  <span>{t('footer.contactUs')}</span>
                 </Link>
               </li>
               <li>
@@ -121,31 +123,31 @@ export const Footer: React.FC = () => {
           {/* Col 4: Legal & Policies */}
           <div className="space-y-3">
             <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-[#d6c9ba]">
-              Legal &amp; Trust
+              {t('footer.legalAndTrust')}
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link
-                  to="/privacy-policy"
+                  to={getLocalizedUrl('/privacy-policy')}
                   onClick={() => sound.playClick()}
                   className="hover:text-amber-400 transition-colors flex items-center space-x-1.5"
                 >
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Privacy Policy</span>
+                  <span>{t('footer.privacyPolicy')}</span>
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/terms"
+                  to={getLocalizedUrl('/terms')}
                   onClick={() => sound.playClick()}
                   className="hover:text-amber-400 transition-colors flex items-center space-x-1.5"
                 >
                   <FileText className="w-3.5 h-3.5 text-amber-500" />
-                  <span>Terms of Service</span>
+                  <span>{t('footer.termsOfService')}</span>
                 </Link>
               </li>
               <li className="text-[11px] text-[#736557] pt-1">
-                Guest gameplay is anonymous and privacy-friendly.
+                {t('footer.guestNotice')}
               </li>
             </ul>
           </div>
@@ -153,9 +155,9 @@ export const Footer: React.FC = () => {
 
         {/* Bottom copyright */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#6b5d50] gap-3">
-          <p>© {currentYear} Snake &amp; Ladder Online. All rights reserved.</p>
+          <p>© {currentYear} Snake &amp; Ladder Online. {t('footer.allRightsReserved')}</p>
           <p className="text-center sm:text-right">
-            Designed for seamless family board gaming across all modern desktop and mobile browsers.
+            {t('footer.crossDeviceNotice')}
           </p>
         </div>
       </div>

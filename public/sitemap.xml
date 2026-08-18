@@ -1,38 +1,308 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ========================================================================= -->
+  <!-- 1. HOMEPAGE & ROOT -->
+  <!-- ========================================================================= -->
   <url>
     <loc>https://snakeandladder.online/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://snakeandladder.online/hi</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://snakeandladder.online/es</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://snakeandladder.online/fr</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://snakeandladder.online/de</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://snakeandladder.online/pt</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://snakeandladder.online/it</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://snakeandladder.online/id</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://snakeandladder.online/tr</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://snakeandladder.online/ar</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar" />
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ========================================================================= -->
+  <!-- 2. HOW TO PLAY -->
+  <!-- ========================================================================= -->
+  <url>
     <loc>https://snakeandladder.online/how-to-play</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/how-to-play" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/how-to-play" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi/how-to-play" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es/how-to-play" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr/how-to-play" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de/how-to-play" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt/how-to-play" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it/how-to-play" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id/how-to-play" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr/how-to-play" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar/how-to-play" />
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- ========================================================================= -->
+  <!-- 3. RULES & REGULATIONS -->
+  <!-- ========================================================================= -->
   <url>
     <loc>https://snakeandladder.online/snake-and-ladder-rules</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/snake-and-ladder-rules" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/snake-and-ladder-rules" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi/snake-and-ladder-rules" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es/snake-and-ladder-rules" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr/snake-and-ladder-rules" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de/snake-and-ladder-rules" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt/snake-and-ladder-rules" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it/snake-and-ladder-rules" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id/snake-and-ladder-rules" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr/snake-and-ladder-rules" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar/snake-and-ladder-rules" />
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- ========================================================================= -->
+  <!-- 4. PLAY WITH FRIENDS -->
+  <!-- ========================================================================= -->
   <url>
     <loc>https://snakeandladder.online/play-with-friends</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/play-with-friends" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/play-with-friends" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi/play-with-friends" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es/play-with-friends" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr/play-with-friends" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de/play-with-friends" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt/play-with-friends" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it/play-with-friends" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id/play-with-friends" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr/play-with-friends" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar/play-with-friends" />
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- ========================================================================= -->
+  <!-- 5. ABOUT US -->
+  <!-- ========================================================================= -->
   <url>
     <loc>https://snakeandladder.online/about</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/about" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/about" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it/about" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr/about" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar/about" />
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
+
+  <!-- ========================================================================= -->
+  <!-- 6. CONTACT US -->
+  <!-- ========================================================================= -->
+  <url>
+    <loc>https://snakeandladder.online/contact</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/contact" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it/contact" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar/contact" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ========================================================================= -->
+  <!-- 7. PRIVACY POLICY -->
+  <!-- ========================================================================= -->
   <url>
     <loc>https://snakeandladder.online/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar/privacy-policy" />
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.4</priority>
   </url>
+
+  <!-- ========================================================================= -->
+  <!-- 8. TERMS OF SERVICE -->
+  <!-- ========================================================================= -->
   <url>
     <loc>https://snakeandladder.online/terms</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://snakeandladder.online/terms" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://snakeandladder.online/terms" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://snakeandladder.online/hi/terms" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://snakeandladder.online/es/terms" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://snakeandladder.online/fr/terms" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://snakeandladder.online/de/terms" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://snakeandladder.online/pt/terms" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://snakeandladder.online/it/terms" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://snakeandladder.online/id/terms" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://snakeandladder.online/tr/terms" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://snakeandladder.online/ar/terms" />
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.4</priority>
   </url>
 </urlset>
