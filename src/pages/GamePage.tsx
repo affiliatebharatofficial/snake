@@ -185,7 +185,7 @@ export const GamePage: React.FC = () => {
   // Handle authoritative dice roll
   const handleRollDice = useCallback(
     async (targetGuestId?: string) => {
-      if (!room || room.status !== 'playing' || isRolling) return;
+      if (!room || room.status !== 'playing' || isRolling || movingPlayerId !== undefined) return;
 
       const currentTurnId = targetGuestId || room.currentTurnGuestId;
       if (currentTurnId !== room.currentTurnGuestId) return;
@@ -196,29 +196,62 @@ export const GamePage: React.FC = () => {
       setIsRolling(true);
       sound.playDiceRoll();
 
-      // 700ms rolling sequence
-      await new Promise(r => setTimeout(r, 700));
-
       try {
-        const { room: updatedRoom, moveResult } = await MultiplayerService.rollDice(
+        const rollPromise = MultiplayerService.rollDice(
           room.id,
           currentTurnId || session.guestId
         );
 
-        // Trigger slow, smooth movement sequence
-        await animateMoveSteps(
-          moveResult.guestId,
-          nickname,
-          moveResult.diceValue,
-          moveResult.steps,
-          moveResult.specialMove
-        );
+        // Ensure at least 700ms rolling visual animation
+        const [rollResponse] = await Promise.all([
+          rollPromise,
+          new Promise(r => setTimeout(r, 700)),
+        ]);
 
-        setRoom({ ...updatedRoom });
+        const { room: updatedRoom, moveResult } = rollResponse;
+
+        // 1. Stop rolling animation and immediately reveal the dice result
+        setIsRolling(false);
+        setRoom(prev => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            lastDiceResult: moveResult.diceValue,
+          };
+        });
+
+        // 2. Announce the rolled dice number
+        setMoveBanner({
+          text: `🎲 ${nickname} rolled a ${moveResult.diceValue}!`,
+          type: 'normal',
+        });
 
         if (moveResult.diceValue === 6 && !moveResult.isWinner) {
           sound.playSix();
         }
+
+        // 3. Clear pause (650ms) so players clearly see the dice result before piece moves
+        await new Promise(r => setTimeout(r, 650));
+
+        // 4. Animate player piece moving along the board
+        if (moveResult.steps && moveResult.steps.length > 0) {
+          await animateMoveSteps(
+            moveResult.guestId,
+            nickname,
+            moveResult.diceValue,
+            moveResult.steps,
+            moveResult.specialMove
+          );
+        } else if (moveResult.oldPosition + moveResult.diceValue > 100) {
+          setMoveBanner({
+            text: `🎲 ${nickname} rolled ${moveResult.diceValue} (Need exact roll to reach 100!)`,
+            type: 'normal',
+          });
+          await new Promise(r => setTimeout(r, 1000));
+        }
+
+        // 5. Update to authoritative final room state
+        setRoom({ ...updatedRoom });
 
         if (moveResult.isWinner) {
           const winnerPlayer = updatedRoom.players.find((p: Player) => p.id === moveResult.guestId);
@@ -241,12 +274,12 @@ export const GamePage: React.FC = () => {
         setIsRolling(false);
       }
     },
-    [room, isRolling, animateMoveSteps, session.guestId]
+    [room, isRolling, movingPlayerId, animateMoveSteps, session.guestId]
   );
 
   // Bot Turn Engine
   useEffect(() => {
-    if (!room || room.status !== 'playing' || isRolling) return;
+    if (!room || room.status !== 'playing' || isRolling || movingPlayerId !== undefined) return;
 
     const currentPlayer = room.players.find(p => p.id === room.currentTurnGuestId);
     if (currentPlayer && currentPlayer.isBot) {
@@ -261,7 +294,7 @@ export const GamePage: React.FC = () => {
     return () => {
       if (botTimeoutRef.current) clearTimeout(botTimeoutRef.current);
     };
-  }, [room, isRolling, handleRollDice]);
+  }, [room, isRolling, movingPlayerId, handleRollDice]);
 
   // Start Game
   const handleStartGame = async () => {
@@ -429,8 +462,9 @@ export const GamePage: React.FC = () => {
           <Dice3D
             value={room.lastDiceResult || 1}
             isRolling={isRolling}
+            isMoving={movingPlayerId !== undefined}
             isMyTurn={isMyTurn}
-            disabled={room.status !== 'playing' || !isMyTurn}
+            disabled={room.status !== 'playing' || !isMyTurn || isRolling || movingPlayerId !== undefined}
             onRoll={() => handleRollDice()}
           />
 
