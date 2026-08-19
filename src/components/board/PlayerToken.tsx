@@ -9,6 +9,7 @@ interface PlayerTokenProps {
   totalTokensInSquare: number;
   tokenIndexInSquare: number;
   isMoving?: boolean;
+  isSpecialMoving?: boolean;
 }
 
 const TOKEN_COLOR_THEMES: Record<string, {
@@ -49,19 +50,20 @@ export const PlayerToken: React.FC<PlayerTokenProps> = ({
   totalTokensInSquare,
   tokenIndexInSquare,
   isMoving = false,
+  isSpecialMoving = false,
 }) => {
   let x = 0;
   let y = 0;
 
   if (player.position === 0) {
-    // Waiting dock area outside bottom of board
+    // Waiting dock area clearly visible at square 1 start base
     const dockOffsets = [
-      { x: -5.5, y: 95 },
-      { x: -5.5, y: 85 },
-      { x: -5.5, y: 75 },
-      { x: -5.5, y: 65 },
+      { x: 3.5, y: 96.5 },
+      { x: 6.5, y: 96.5 },
+      { x: 3.5, y: 93.5 },
+      { x: 6.5, y: 93.5 },
     ];
-    const offset = dockOffsets[player.playerNumber - 1] || { x: -5.5, y: 95 };
+    const offset = dockOffsets[(player.playerNumber - 1) % 4] || { x: 5, y: 95 };
     x = offset.x;
     y = offset.y;
   } else {
@@ -73,10 +75,10 @@ export const PlayerToken: React.FC<PlayerTokenProps> = ({
       // Smart orbital clustering when multiple tokens share square
       if (totalTokensInSquare > 1) {
         const offsets = [
-          { dx: -1.7, dy: -1.7 },
-          { dx: 1.7, dy: -1.7 },
-          { dx: -1.7, dy: 1.7 },
-          { dx: 1.7, dy: 1.7 },
+          { dx: -1.8, dy: -1.8 },
+          { dx: 1.8, dy: -1.8 },
+          { dx: -1.8, dy: 1.8 },
+          { dx: 1.8, dy: 1.8 },
         ];
         const offset = offsets[tokenIndexInSquare % 4];
         x += offset.dx;
@@ -89,12 +91,17 @@ export const PlayerToken: React.FC<PlayerTokenProps> = ({
 
   return (
     <div
-      className={`absolute z-30 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-out pointer-events-none ${
+      className={`absolute z-30 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none ${
         isMoving ? 'scale-125 z-40' : ''
       }`}
       style={{
         left: `${x}%`,
         top: `${y}%`,
+        transition: isSpecialMoving
+          ? 'left 900ms cubic-bezier(0.4, 0, 0.2, 1), top 900ms cubic-bezier(0.4, 0, 0.2, 1), transform 350ms ease-out'
+          : isMoving
+          ? 'left 380ms ease-in-out, top 380ms ease-in-out, transform 200ms ease-out'
+          : 'left 300ms ease-out, top 300ms ease-out, transform 200ms ease-out',
       }}
       title={`${player.nickname} (Position: ${player.position})`}
     >

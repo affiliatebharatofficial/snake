@@ -32,6 +32,8 @@ export const GamePage: React.FC = () => {
 
   const [isRolling, setIsRolling] = useState(false);
   const [movingPlayerId, setMovingPlayerId] = useState<string | undefined>(undefined);
+  const [isSpecialMoving, setIsSpecialMoving] = useState(false);
+  const [moveBanner, setMoveBanner] = useState<{ text: string; type: 'normal' | 'ladder' | 'snake' } | null>(null);
   const [isNickModalOpen, setIsNickModalOpen] = useState(false);
 
   const botTimeoutRef = useRef<any>(null);
@@ -83,97 +85,164 @@ export const GamePage: React.FC = () => {
     };
   }, [loadRoom]);
 
-  // Synchronized step-by-step movement animation
-  const animateMoveSteps = useCallback(async (playerId: string, steps: number[], specialType?: string) => {
-    setMovingPlayerId(playerId);
+  // Synchronized slow, smooth step-by-step movement animation
+  const animateMoveSteps = useCallback(
+    async (
+      playerId: string,
+      playerNickname: string,
+      diceValue: number,
+      steps: number[],
+      specialMove?: { type: string; from: number; to: number }
+    ) => {
+      setMovingPlayerId(playerId);
 
-    for (let i = 0; i < steps.length; i++) {
-      const stepPos = steps[i];
-      const isLastStep = i === steps.length - 1;
+      // 1. Regular square-by-square slow hops
+      for (let i = 0; i < steps.length; i++) {
+        const stepPos = steps[i];
 
-      // If this is the special destination step (e.g. snake slide or ladder climb)
-      if (isLastStep && specialType) {
-        if (specialType === 'snake') {
-          // Play snake hiss/bite right before slide
-          sound.playSnake();
-          await new Promise(r => setTimeout(r, 200));
-        } else if (specialType === 'ladder') {
-          // Play ladder climb right before ascension
-          sound.playLadder();
-          await new Promise(r => setTimeout(r, 150));
-        }
-      } else {
-        // Regular piece step hop
         sound.playStep(i);
+        setMoveBanner({
+          text: `🎲 ${playerNickname} rolled ${diceValue} (Square ${stepPos})`,
+          type: 'normal',
+        });
+
+        setRoom(prev => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            players: prev.players.map(pl =>
+              pl.id === playerId ? { ...pl, position: stepPos } : pl
+            ),
+          };
+        });
+
+        // Slow, clear hop speed (420ms per cell)
+        await new Promise(r => setTimeout(r, 420));
       }
 
-      setRoom(prev => {
-        if (!prev) return prev;
-        const copy = { ...prev };
-        const p = copy.players.find(pl => pl.id === playerId);
-        if (p) p.position = stepPos;
-        return copy;
-      });
+      // 2. Special Action (Ladder Climb or Snake Slide)
+      if (specialMove) {
+        // Pause on the trigger square so player clearly sees what they landed on
+        await new Promise(r => setTimeout(r, 600));
 
-      await new Promise(r => setTimeout(r, specialType && isLastStep ? 450 : 200));
-    }
+        if (specialMove.type === 'ladder') {
+          setMoveBanner({
+            text: `🪜 LADDER! Climbing from Square ${specialMove.from} to ${specialMove.to}!`,
+            type: 'ladder',
+          });
+          sound.playLadder();
+          setIsSpecialMoving(true);
 
-    setMovingPlayerId(undefined);
-  }, []);
+          setRoom(prev => {
+            if (!prev) return prev;
+            return {
+              ...prev,
+              players: prev.players.map(pl =>
+                pl.id === playerId ? { ...pl, position: specialMove.to } : pl
+              ),
+            };
+          });
+
+          // Smooth 950ms ladder climb
+          await new Promise(r => setTimeout(r, 950));
+          setIsSpecialMoving(false);
+          await new Promise(r => setTimeout(r, 400));
+        } else if (specialMove.type === 'snake') {
+          setMoveBanner({
+            text: `🐍 SNAKE BITE! Sliding from Square ${specialMove.from} down to ${specialMove.to}!`,
+            type: 'snake',
+          });
+          sound.playSnake();
+          setIsSpecialMoving(true);
+
+          setRoom(prev => {
+            if (!prev) return prev;
+            return {
+              ...prev,
+              players: prev.players.map(pl =>
+                pl.id === playerId ? { ...pl, position: specialMove.to } : pl
+              ),
+            };
+          });
+
+          // Smooth 950ms snake descent
+          await new Promise(r => setTimeout(r, 950));
+          setIsSpecialMoving(false);
+          await new Promise(r => setTimeout(r, 400));
+        }
+      }
+
+      setMovingPlayerId(undefined);
+
+      // Keep banner visible briefly so players understand the outcome
+      setTimeout(() => {
+        setMoveBanner(null);
+      }, 1500);
+    },
+    []
+  );
 
   // Handle authoritative dice roll
-  const handleRollDice = useCallback(async (targetGuestId?: string) => {
-    if (!room || room.status !== 'playing' || isRolling) return;
+  const handleRollDice = useCallback(
+    async (targetGuestId?: string) => {
+      if (!room || room.status !== 'playing' || isRolling) return;
 
-    const currentTurnId = targetGuestId || room.currentTurnGuestId;
-    if (currentTurnId !== room.currentTurnGuestId) return;
+      const currentTurnId = targetGuestId || room.currentTurnGuestId;
+      if (currentTurnId !== room.currentTurnGuestId) return;
 
-    setIsRolling(true);
-    sound.playDiceRoll();
+      const rollingPlayer = room.players.find(p => p.id === currentTurnId);
+      const nickname = rollingPlayer ? rollingPlayer.nickname : 'Player';
 
-    // 700ms rolling sequence
-    await new Promise(r => setTimeout(r, 700));
+      setIsRolling(true);
+      sound.playDiceRoll();
 
-    try {
-      const { room: updatedRoom, moveResult } = await MultiplayerService.rollDice(
-        room.id,
-        currentTurnId || session.guestId
-      );
+      // 700ms rolling sequence
+      await new Promise(r => setTimeout(r, 700));
 
-      // Trigger movement sequence
-      await animateMoveSteps(
-        moveResult.guestId,
-        moveResult.steps,
-        moveResult.specialMove?.type
-      );
+      try {
+        const { room: updatedRoom, moveResult } = await MultiplayerService.rollDice(
+          room.id,
+          currentTurnId || session.guestId
+        );
 
-      setRoom({ ...updatedRoom });
+        // Trigger slow, smooth movement sequence
+        await animateMoveSteps(
+          moveResult.guestId,
+          nickname,
+          moveResult.diceValue,
+          moveResult.steps,
+          moveResult.specialMove
+        );
 
-      if (moveResult.diceValue === 6 && !moveResult.isWinner) {
-        sound.playSix();
-      }
+        setRoom({ ...updatedRoom });
 
-      if (moveResult.isWinner) {
-        const winnerPlayer = updatedRoom.players.find((p: Player) => p.id === moveResult.guestId);
-        if (winnerPlayer) {
-          saveRecentGame({
-            id: `game_${Date.now()}`,
-            roomCode: updatedRoom.roomCode,
-            mode: updatedRoom.mode,
-            date: Date.now(),
-            winnerNickname: winnerPlayer.nickname,
-            isWon: winnerPlayer.id === session.guestId,
-            totalPlayers: updatedRoom.players.length,
-            finalPosition: winnerPlayer.position,
-          });
+        if (moveResult.diceValue === 6 && !moveResult.isWinner) {
+          sound.playSix();
         }
+
+        if (moveResult.isWinner) {
+          const winnerPlayer = updatedRoom.players.find((p: Player) => p.id === moveResult.guestId);
+          if (winnerPlayer) {
+            saveRecentGame({
+              id: `game_${Date.now()}`,
+              roomCode: updatedRoom.roomCode,
+              mode: updatedRoom.mode,
+              date: Date.now(),
+              winnerNickname: winnerPlayer.nickname,
+              isWon: winnerPlayer.id === session.guestId,
+              totalPlayers: updatedRoom.players.length,
+              finalPosition: winnerPlayer.position,
+            });
+          }
+        }
+      } catch (err: any) {
+        console.error('Roll error:', err);
+      } finally {
+        setIsRolling(false);
       }
-    } catch (err: any) {
-      console.error('Roll error:', err);
-    } finally {
-      setIsRolling(false);
-    }
-  }, [room, isRolling, animateMoveSteps, session.guestId]);
+    },
+    [room, isRolling, animateMoveSteps, session.guestId]
+  );
 
   // Bot Turn Engine
   useEffect(() => {
@@ -350,6 +419,8 @@ export const GamePage: React.FC = () => {
             players={room.players}
             currentTurnGuestId={room.currentTurnGuestId}
             movingPlayerId={movingPlayerId}
+            isSpecialMoving={isSpecialMoving}
+            moveBanner={moveBanner}
           />
         </div>
 

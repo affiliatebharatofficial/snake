@@ -502,11 +502,9 @@ export class MultiplayerService {
       if (ladders[newPos]) {
         finalPos = ladders[newPos];
         specialMove = { type: 'ladder', from: newPos, to: finalPos };
-        steps.push(finalPos);
       } else if (snakes[newPos]) {
         finalPos = snakes[newPos];
         specialMove = { type: 'snake', from: newPos, to: finalPos };
-        steps.push(finalPos);
       }
 
       player.position = finalPos;
