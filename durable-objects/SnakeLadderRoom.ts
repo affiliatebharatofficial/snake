@@ -449,13 +449,18 @@ export class SnakeLadderRoom implements DurableObject {
       };
       this.broadcast(winMessage);
     } else {
-      // 7. Bot AI Turn Automation
+      // 7. Bot AI Turn Automation (only if no connected human sessions are managing turn)
       const nextPlayer = this.room.players.find(p => p.id === nextPlayerId);
       if (nextPlayer && nextPlayer.isBot) {
-        // Schedule next bot turn in Durable Object
-        setTimeout(() => {
-          this.processRollDice(undefined, nextPlayer.id);
-        }, 1200);
+        const hasHumanSession = Array.from(this.sessions.values()).some(s => {
+          const p = this.room?.players.find(pl => pl.id === s.guestId);
+          return p && !p.isBot;
+        });
+        if (!hasHumanSession) {
+          setTimeout(() => {
+            this.processRollDice(undefined, nextPlayer.id);
+          }, 1200);
+        }
       }
     }
 
@@ -530,11 +535,9 @@ export class SnakeLadderRoom implements DurableObject {
     if (ladders[intermediate]) {
       finalPos = ladders[intermediate];
       specialMove = { type: 'ladder', from: intermediate, to: finalPos };
-      steps.push(finalPos);
     } else if (snakes[intermediate]) {
       finalPos = snakes[intermediate];
       specialMove = { type: 'snake', from: intermediate, to: finalPos };
-      steps.push(finalPos);
     }
 
     const isWinner = finalPos === 100;

@@ -449,13 +449,14 @@ export class MultiplayerService {
   public static async rollDice(
     roomId: string,
     guestId: string
-  ): Promise<{ room: GameRoom; moveResult: MoveResult }> {
+  ): Promise<{ room?: GameRoom; moveResult?: MoveResult }> {
     if (this.activeSocket && this.activeSocket.readyState === WebSocket.OPEN) {
       this.sendClientMessage({
         type: 'ROLL_DICE',
         guestId,
         actionId: `act_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
       });
+      return {};
     }
 
     const code = roomId.split('_').pop() || '';
@@ -534,6 +535,18 @@ export class MultiplayerService {
       };
 
       this.saveStoredRoom(room);
+
+      // Dispatch unified local event
+      const diceEvent: DiceRolledServerMessage = {
+        type: 'DICE_ROLLED',
+        guestId,
+        diceValue: dice,
+        moveResult,
+        room: { ...room },
+        timestamp: Date.now(),
+      };
+      this.handleServerMessage(diceEvent);
+
       return { room: { ...room }, moveResult };
     }
 
@@ -598,5 +611,15 @@ export class MultiplayerService {
   public static onRoomUpdate(listener: RoomListener): () => void {
     this.roomListeners.add(listener);
     return () => this.roomListeners.delete(listener);
+  }
+
+  public static onDiceRolled(listener: DiceListener): () => void {
+    this.diceListeners.add(listener);
+    return () => this.diceListeners.delete(listener);
+  }
+
+  public static onGameFinished(listener: FinishListener): () => void {
+    this.finishListeners.add(listener);
+    return () => this.finishListeners.delete(listener);
   }
 }
